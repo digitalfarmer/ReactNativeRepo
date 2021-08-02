@@ -1,0 +1,36 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "name": "RobotIjo",
+      "address": "Bandung",
+      "jobs": "Tukang Ketik"
+    },
+    {
+      "name": "Pasupasastra",
+      "address": "Kailas",
+      "jobs": "Pertapa",
+      "id": 2
+    }
+  ],
+  "users": [
+    {
+      "nama": "Robot Ijo",
+      "alamat": "Bandung",
+      "job": "Frontend",
+      "id": 1
+    },
+    {
+      "nama": "Bandu Bondowoso",
+      "alamat": "Yogya",
+      "job": "DevOps",
+      "id": 2
+    },
+    {
+      "nama": "Krishna",
+      "alamat": "dwaraka",
+      "job": "Badawa",
+      "id": 3
+    }
+  ]
+}
