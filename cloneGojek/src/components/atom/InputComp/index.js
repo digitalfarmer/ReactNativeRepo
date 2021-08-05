@@ -2,13 +2,14 @@ import React from 'react';
 import { StyleSheet, TextInput, View } from "react-native";
 import { Colors } from "../../../Utils";
 
-const  InputComp=({placeholder})=>{
+const  InputComp=({placeholder, ...rest})=>{
   return(
     <View>
       <TextInput
         style={styles.inputText}
         placeholder={placeholder}
         placeholderTextColor={Colors.default}
+        {...rest}
       />
     </View>
   )
