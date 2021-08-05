@@ -1,71 +1,49 @@
 import React from 'react';
-import { StyleSheet, Text,  TouchableOpacity, View } from "react-native";
+import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import ActionButton from './ActionButton';
+import {Colors} from '../../Utils';
+import Home from '../../images/home.png';
 
-const ActionButton =({label, button})=>{
-  return(
-    <View style={styles.viewButton}>
-      <Text style={styles.textLabel}>{label}</Text>
-      <TouchableOpacity style={styles.actionButton}>
-          <Text style={styles.textButton}>{button}</Text>
-      </TouchableOpacity>
-    </View>
-  );
-}
-
-const WelcomeAuth =()=>{
-  return(
+const WelcomeAuth = ({ navigation }) => {
+  const handleGoto = screen => {
+    navigation.navigate(screen);
+  };
+  return (
     <View style={styles.wrapper}>
-      <View style={styles.banner}>
-      </View>
-        <Text style={styles.textTitle}>Selamat Datang di O-Jol</Text>
+      <Image source={Home} style={styles.banner} />
+      <Text style={styles.textTitle}>Selamat Datang di O-Jol</Text>
 
-      <ActionButton label={"Silakan Masuk jika sudah memiliki account"} button={"MASUK"}/>
-      <ActionButton label={"Login kalau sudah memiliki account"} button={"DAFTAR"}/>
+      <ActionButton
+        label={'Silakan Masuk jika sudah memiliki account'}
+        button={'MASUK'}
+        onPress={() => handleGoto('Login')}
+      />
+      <ActionButton
+        label={'Login kalau sudah memiliki account'}
+        button={'DAFTAR'}
+        onPress={() => handleGoto('Register')}
+      />
     </View>
   );
-}
+};
 export default WelcomeAuth;
 
 const styles = StyleSheet.create({
-  wrapper:{
-    alignItems:'center',
-    flex:1,
-    justifyContent:'center',
-    backgroundColor:'white'
+  wrapper: {
+    alignItems: 'center',
+    flex: 1,
+    justifyContent: 'center',
+    backgroundColor: 'white',
   },
-  viewButton:{
-    marginBottom:43,
-    maxWidth:225,
-
-  },
-  banner:{
-    width:219,
-    height:117,
-    backgroundColor:'#A55eea',
+  banner: {
+    width: 219,
+    height: 117,
     marginBottom: 10,
   },
-  textTitle:{
-    fontSize:18,
-    fontWeight:'bold',
-    color:'#A55eea',
+  textTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: Colors.default,
     marginBottom: 76,
   },
-  textLabel:{
-    color: '#7e7e7e',
-    fontSize:10,
-    textAlign: 'center',
-  },
-  actionButton:{
-    backgroundColor: '#A55eea',
-    borderRadius:25,
-    paddingVertical:13,
-  },
-  textButton:{
-    color:'white',
-    fontSize:12,
-    fontWeight: 'bold',
-    textTransform:'uppercase',
-    textAlign:'center',
-    
-  }
 });
