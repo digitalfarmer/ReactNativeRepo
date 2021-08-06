@@ -8,15 +8,18 @@
 
 import React from 'react';
 import type {Node} from 'react';
-import {SafeAreaView, ScrollView, Text, useColorScheme} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import Router from './router';
+import {Provider} from 'react-redux';
+import {store} from './redux';
 
 const App: () => Node = () => {
   return (
-    <NavigationContainer>
-      <Router />
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <Router />
+      </NavigationContainer>
+    </Provider>
   );
 };
 

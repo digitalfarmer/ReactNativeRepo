@@ -1,10 +1,13 @@
-import React, { useState} from 'react';
+import React, {useState} from 'react';
 import {Button, Image, ScrollView, StyleSheet, Text, View} from 'react-native';
 import {InputComp} from '../../components';
 import IconBack from '../../images/back.png';
 import BannerIlustration from '../../images/assets.gif';
+import Styles from './style';
+import useSelector from 'react-redux';
 
 const Register = () => {
+  const globalState = useSelector(state => state);
   const [form, setForm] = useState({
     fullName: '',
     email: '',
@@ -26,25 +29,30 @@ const Register = () => {
         <View>
           <Image source={IconBack} style={Styles.buttonBack} />
         </View>
+
         <View>
           <Image source={BannerIlustration} style={Styles.bannerIlustration} />
         </View>
+
         <Text style={Styles.textHeader}>
           {' '}
-          Lengkapi Data Berikut untuk Proses Registrasi
+          Lengkapi Data Berikut untuk Proses Registrasi {globalState.name}
         </Text>
+
         <View style={Styles.space(34)} />
         <InputComp
           placeholder={'Nama Lengkap'}
           value={form.fullName}
           onChangeText={value => onInputChange(value, 'fullName')}
         />
+
         <View style={Styles.space(12)} />
         <InputComp
           placeholder={'Email'}
           value={form.email}
           onChangeText={value => onInputChange(value, 'email')}
         />
+
         <View style={Styles.space(12)} />
         <InputComp
           placeholder={'Password'}
@@ -53,32 +61,10 @@ const Register = () => {
           secureTextEntry={true}
         />
         <View style={Styles.space(12)} />
+
         <Button title={'Daftar'} onPress={sendData} />
       </View>
     </ScrollView>
   );
 };
 export default Register;
-const Styles = StyleSheet.create({
-  space: value => {
-    return {
-      height: value,
-    };
-  },
-  textHeader: {
-    fontSize: 14,
-    fontWeight: 'bold',
-  },
-  bannerIlustration: {
-    marginTop: 8,
-    height: 106,
-    width: 190,
-  },
-  wrapper: {
-    padding: 20,
-  },
-  buttonBack: {
-    width: 25,
-    height: 25,
-  },
-});
