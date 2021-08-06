@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
-import {Button, Image, ScrollView, StyleSheet, Text, View} from 'react-native';
+import {Button, Image, ScrollView, Text, View} from 'react-native';
 import {InputComp} from '../../components';
 import IconBack from '../../images/back.png';
 import BannerIlustration from '../../images/assets.gif';
 import Styles from './style';
-import useSelector from 'react-redux';
+
 
 const Register = () => {
-  const globalState = useSelector(state => state);
+
   const [form, setForm] = useState({
     fullName: '',
     email: '',
@@ -35,8 +35,7 @@ const Register = () => {
         </View>
 
         <Text style={Styles.textHeader}>
-          {' '}
-          Lengkapi Data Berikut untuk Proses Registrasi {globalState.name}
+          Lengkapi Data Berikut untuk Proses Registrasi{''}
         </Text>
 
         <View style={Styles.space(34)} />

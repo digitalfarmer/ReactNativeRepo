@@ -15,11 +15,9 @@ import {store} from './redux';
 
 const App: () => Node = () => {
   return (
-    <Provider store={store}>
-      <NavigationContainer>
-        <Router />
-      </NavigationContainer>
-    </Provider>
+    <NavigationContainer>
+      <Router />
+    </NavigationContainer>
   );
 };
 
