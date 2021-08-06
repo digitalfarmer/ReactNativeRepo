@@ -1,23 +1,24 @@
-import React, {useEffect, useState} from 'react';
+import React, { useState} from 'react';
 import {Button, Image, ScrollView, StyleSheet, Text, View} from 'react-native';
-import {Colors} from '../../Utils';
 import {InputComp} from '../../components';
 import IconBack from '../../images/back.png';
 import BannerIlustration from '../../images/assets.gif';
 
 const Register = () => {
-  const [form, setForm] =useState({
+  const [form, setForm] = useState({
     fullName: '',
     email: '',
     password: '',
   });
 
-  useEffect(() => {
-    console.log('Component Mount in debug Mode');
-  });
-
+  const onInputChange = (value, input) => {
+    setForm({
+      ...form,
+      [input]: value,
+    });
+  };
   const sendData = () => {
-    console.log('Kirim Data');
+    console.log('Kirim Data', form);
   };
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
@@ -32,12 +33,25 @@ const Register = () => {
           {' '}
           Lengkapi Data Berikut untuk Proses Registrasi
         </Text>
-        <View style={Styles.space(34)}  />
-        <InputComp placeholder={'Nama Lengkap'} value={form.fullName} />
+        <View style={Styles.space(34)} />
+        <InputComp
+          placeholder={'Nama Lengkap'}
+          value={form.fullName}
+          onChangeText={value => onInputChange(value, 'fullName')}
+        />
         <View style={Styles.space(12)} />
-        <InputComp placeholder={'Email'} />
+        <InputComp
+          placeholder={'Email'}
+          value={form.email}
+          onChangeText={value => onInputChange(value, 'email')}
+        />
         <View style={Styles.space(12)} />
-        <InputComp placeholder={'Password'} />
+        <InputComp
+          placeholder={'Password'}
+          value={form.password}
+          onChangeText={value => onInputChange(value, 'password')}
+          secureTextEntry={true}
+        />
         <View style={Styles.space(12)} />
         <Button title={'Daftar'} onPress={sendData} />
       </View>
