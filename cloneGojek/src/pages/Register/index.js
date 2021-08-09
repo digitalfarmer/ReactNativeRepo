@@ -5,10 +5,10 @@ import IconBack from '../../images/back.png';
 import BannerIlustration from '../../images/assets.gif';
 import Styles from './style';
 import {useDispatch, useSelector} from 'react-redux';
-import { setForm } from "../../redux";
+import {setForm} from '../../redux';
 
 const Register = () => {
-  const { form } = useSelector(state => state.RegisterReducer);
+  const {form} = useSelector(state => state.RegisterReducer);
   const dispacth = useDispatch();
   useEffect(() => {
     console.log(form);
@@ -25,7 +25,7 @@ const Register = () => {
     //   ...form,
     //   [input]: value,
     // });
-    dispacth(setForm(inputType,value));
+    dispacth(setForm(inputType, value));
   };
   const sendData = () => {
     console.log('Kirim Data', form);
