@@ -1,32 +1,33 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from 'react';
 import {Button, Image, ScrollView, Text, View} from 'react-native';
 import {InputComp} from '../../components';
 import IconBack from '../../images/back.png';
 import BannerIlustration from '../../images/assets.gif';
 import Styles from './style';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 
 const Register = () => {
   const RegisterReducer = useSelector(state => state.RegisterReducer);
-  useEffect(()=>{
-    console.log(RegisterReducer)
-  },[RegisterReducer]);
+  const dispacth = useDispatch();
+  useEffect(() => {
+    console.log(RegisterReducer);
+  }, [RegisterReducer]);
 
-
-  const [form, setForm] = useState({
-    fullName: '',
-    email: '',
-    password: '',
-  });
+  // const [form, setForm] = useState({
+  //   fullName: '',
+  //   email: '',
+  //   password: '',
+  // });
 
   const onInputChange = (value, input) => {
-    setForm({
-      ...form,
-      [input]: value,
-    });
+    // setForm({
+    //   ...form,
+    //   [input]: value,
+    // });
+    dispacth({type: 'SET_FORM', inputType: input, inputValue: value});
   };
   const sendData = () => {
-    console.log('Kirim Data', form);
+    console.log('Kirim Data', RegisterReducer.form);
   };
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
@@ -46,21 +47,21 @@ const Register = () => {
         <View style={Styles.space(34)} />
         <InputComp
           placeholder={'Nama Lengkap'}
-          value={form.fullName}
+          value={RegisterReducer.form.fullName}
           onChangeText={value => onInputChange(value, 'fullName')}
         />
 
         <View style={Styles.space(12)} />
         <InputComp
           placeholder={'Email'}
-          value={form.email}
+          value={RegisterReducer.form.email}
           onChangeText={value => onInputChange(value, 'email')}
         />
 
         <View style={Styles.space(12)} />
         <InputComp
           placeholder={'Password'}
-          value={form.password}
+          value={RegisterReducer.form.password}
           onChangeText={value => onInputChange(value, 'password')}
           secureTextEntry={true}
         />
