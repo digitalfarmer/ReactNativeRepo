@@ -20,11 +20,11 @@ odoo.connect(function (err) {
 
 //param
 const params = {
-  ids: [1, 2, 3, 4, 5],
+  ids: [1,2,3,4,5],
   fields: ['name','email'],
 }; //params
 
-odoo.get('res.partner', params, function (err, partners) {
+odoo.get('res.partner', params,function (err, partners) {
   if (err) {
     return console.log(err);
   }
